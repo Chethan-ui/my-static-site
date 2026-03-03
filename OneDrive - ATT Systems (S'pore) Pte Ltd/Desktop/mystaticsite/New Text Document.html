@@ -3,21 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fossils × Nature — Echoes of Ancient Life</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-  
+  <title>Catch • Dot</title>
   <style>
-    :root {
-      --bg-dark: #0a0e17;
-      --accent: #e0b577;
-      --accent-dark: #c89f5e;
-      --text-light: #e5e7eb;
-      --text-muted: #9ca3af;
-      --card-bg: rgba(20, 25, 40, 0.78);
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -25,201 +12,153 @@
     }
 
     body {
-      background: linear-gradient(to bottom, #0a0e17 0%, #0f1622 100%);
-      color: var(--text-light);
-      font-family: 'Inter', system-ui, sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-      background-image: 
-        radial-gradient(circle at 15% 50%, rgba(160, 130, 80, 0.07) 0%, transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(100, 140, 180, 0.06) 0%, transparent 30%);
-      background-attachment: fixed;
+      height: 100dvh;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+      color: #e0e0ff;
+      font-family: system-ui, -apple-system, sans-serif;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      cursor: none;
     }
 
-    header {
-      padding: 140px 5% 100px;
+    .container {
       text-align: center;
-      background: linear-gradient(to bottom, rgba(10,14,23,0.4), rgba(10,14,23,0.85) 70%);
+      position: relative;
+      width: 100%;
+      height: 100%;
     }
 
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3.2rem, 8vw, 7.5rem);
-      font-weight: 700;
-      letter-spacing: -1px;
-      background: linear-gradient(90deg, #e0b577, #f5d9a3, #d4a76a);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.3em;
+      font-size: clamp(2.8rem, 9vw, 6rem);
+      font-weight: 100;
+      letter-spacing: -0.05em;
+      opacity: 0.9;
+      margin-bottom: 0.4rem;
+      user-select: none;
+      pointer-events: none;
     }
 
-    .subtitle {
-      font-size: clamp(1.25rem, 3.5vw, 1.9rem);
-      color: var(--text-muted);
-      max-width: 780px;
-      margin: 0 auto 2.5rem;
+    .score {
+      font-size: clamp(1.3rem, 5vw, 2.4rem);
+      font-weight: 300;
+      opacity: 0.7;
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+      user-select: none;
+      pointer-events: none;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2.2rem;
-      padding: 0 5% 100px;
-      max-width: 1600px;
-      margin: 0 auto;
-    }
-
-    .card {
-      position: relative;
-      height: 520px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(160, 130, 80, 0.14);
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    }
-
-    .card:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.65);
-      border-color: rgba(224, 181, 119, 0.35);
-    }
-
-    .card-img {
-      height: 68%;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
-
-    .card-img::after {
-      content: '';
+    .target {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, #ff6bff, #7b00ff 60%, transparent 80%);
+      border-radius: 50%;
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10,14,23,0.85) 0%, transparent 60%);
+      translate: -50% -50%;
+      box-shadow: 
+        0 0 40px #ff6bff80,
+        0 0 80px #7b00ff60,
+        inset 0 0 30px #ffffff30;
+      pointer-events: all;
+      cursor: none;
+      transition: all 0.13s ease-out;
+      scale: 0.92;
     }
 
-    .card-content {
-      padding: 1.8rem 1.6rem;
+    .target:hover {
+      scale: 1.15;
+      box-shadow: 
+        0 0 70px #ff6bffff,
+        0 0 140px #7b00ffff,
+        inset 0 0 40px #ffffff60;
     }
 
-    .card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      margin-bottom: 0.6rem;
-      color: var(--accent);
+    .target:active {
+      scale: 0.68;
+      transition: all 0.08s ease-out;
     }
 
-    .card p {
-      color: var(--text-muted);
-      font-size: 0.97rem;
-      margin-bottom: 1.3rem;
+    .instructions {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      translate: -50% 0;
+      font-size: 1rem;
+      opacity: 0.5;
+      letter-spacing: 0.05em;
+      pointer-events: none;
+      user-select: none;
     }
 
-    .btn-details {
-      display: inline-block;
-      padding: 0.8rem 1.6rem;
-      background: transparent;
-      border: 1.5px solid var(--accent);
-      color: var(--accent);
-      border-radius: 50px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      cursor: pointer;
+    .custom-cursor {
+      width: 36px;
+      height: 36px;
+      border: 2px solid #a5b4fc;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      translate: -50% -50%;
+      transition: all 0.09s ease-out;
+      mix-blend-mode: difference;
     }
 
-    .btn-details:hover {
-      background: var(--accent);
-      color: #0f1622;
-      transform: translateY(-2px);
-    }
-
-    footer {
-      text-align: center;
-      padding: 60px 20px 100px;
-      color: #4b5563;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 600px) {
-      header { padding: 100px 5% 70px; }
-      .card { height: 480px; }
+    .custom-cursor.clicking {
+      width: 24px;
+      height: 24px;
+      background: rgba(165, 180, 252, 0.7);
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Fossils</h1>
-    <div class="subtitle">
-      Nature’s archive — stories written in stone over hundreds of millions of years
-    </div>
-  </header>
+<div class="container">
+  <h1>Catch • Dot</h1>
+  <div class="score">clicks: <span id="score">0</span></div>
 
-  <section class="gallery">
+  <div class="target" id="target"></div>
 
-    <div class="card">
-      <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1617791160505-6f00504e3519?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90')"></div>
-      <div class="card-content">
-        <h3>Trilobite</h3>
-        <p>520–250 million years ago • One of the most successful animal groups ever — ruled ancient seas for ~270 million years.</p>
-        <a href="#" class="btn-details">View Full Details</a>
-      </div>
-    </div>
+  <div class="instructions">move mouse & click the glowing dot • try to get faster</div>
+</div>
 
-    <div class="card">
-      <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1581092160560-1c1e428e9d65?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90')"></div>
-      <div class="card-content">
-        <h3>Ammonite</h3>
-        <p>Coiled cephalopods that dominated Mesozoic oceans until the end-Cretaceous extinction 66 Ma.</p>
-        <a href="#" class="btn-details">View Full Details</a>
-      </div>
-    </div>
+<div class="custom-cursor" id="cursor"></div>
 
-    <div class="card">
-      <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1567095761054-7a02d69e5c43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90')"></div>
-      <div class="card-content">
-        <h3>Tyrannosaurus rex</h3>
-        <p>Late Cretaceous apex predator • One of the most iconic dinosaur fossils ever discovered.</p>
-        <a href="#" class="btn-details">View Full Details</a>
-      </div>
-    </div>
+<script>
+// ────────────────────────────────────────────────
+//   Tiny JS only for moving the dot & counting
+// ────────────────────────────────────────────────
 
-    <div class="card">
-      <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1629909615187-8ea08b3a46b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90')"></div>
-      <div class="card-content">
-        <h3>Archaeopteryx</h3>
-        <p>~150 million years ago • The classic transitional fossil between dinosaurs and modern birds.</p>
-        <a href="#" class="btn-details">View Full Details</a>
-      </div>
-    </div>
+let score = 0;
+const target = document.getElementById('target');
+const scoreEl = document.getElementById('score');
+const cursor = document.getElementById('cursor');
 
-    <div class="card">
-      <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1611244130268-88d6975b028f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90')"></div>
-      <div class="card-content">
-        <h3>Megalodon Tooth</h3>
-        <p>Miocene–Pliocene • The largest shark that ever lived — up to 18 meters long.</p>
-        <a href="#" class="btn-details">View Full Details</a>
-      </div>
-    </div>
+function randomPos() {
+  const x = Math.random() * (window.innerWidth - 120) + 60;
+  const y = Math.random() * (window.innerHeight - 180) + 90;
+  target.style.left = x + 'px';
+  target.style.top  = y + 'px';
+}
 
-    <div class="card">
-      <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1580130718646-9f694209b207?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90')"></div>
-      <div class="card-content">
-        <h3>Amber-preserved Life</h3>
-        <p>Up to 130 million years • Insects, spiders, feathers & even small vertebrates trapped in tree resin.</p>
-        <a href="#" class="btn-details">View Full Details</a>
-      </div>
-    </div>
+target.addEventListener('click', () => {
+  score++;
+  scoreEl.textContent = score;
+  randomPos();
+});
 
-  </section>
+// Move fancy cursor
+window.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
 
-  <footer>
-    Nature keeps the records. We keep discovering them.
-  </footer>
+window.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+window.addEventListener('mouseup',   () => cursor.classList.remove('clicking'));
+
+// First position
+randomPos();
+</script>
 
 </body>
 </html>
