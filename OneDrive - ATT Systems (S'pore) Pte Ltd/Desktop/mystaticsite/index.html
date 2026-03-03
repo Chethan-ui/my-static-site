@@ -3,89 +3,188 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bubble • Burst</title>
+  <title>The World in Turmoil: Major Conflicts Escalating in Early 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      margin:0; height:100dvh; background:linear-gradient(to bottom,#0f0a2a,#1a0040 70%,#000);
-      color:#d4d4ff; font-family:system-ui; overflow:hidden; cursor:none;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+      color: #e0e0ff;
+      line-height: 1.7;
+      min-height: 100vh;
     }
-    #ui {
-      position:absolute; top:2rem; left:50%; translate:-50% 0;
-      font-size:2rem; font-weight:300; display:flex; gap:3rem;
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
     }
-    .bubble {
-      position:absolute; border-radius:50%; pointer-events:all;
-      background:radial-gradient(circle at 30% 30%,#a8e6cf,#60a5fa40);
-      box-shadow:0 0 40px #60a5fa60, inset 0 2px 10px rgba(255,255,255,0.3);
-      transition:transform 0.2s ease-out;
+
+    header {
+      text-align: center;
+      padding: 4rem 0 2rem;
     }
-    .bubble:hover { scale:1.1; box-shadow:0 0 60px #60a5fa; }
-    .bubble.burst { scale:0; }
-    .cursor {
-      position:fixed; width:36px; height:36px; border:2px solid #a78bfa;
-      border-radius:50%; pointer-events:none; z-index:99; translate:-50% -50%;
-      transition:0.12s; mix-blend-mode:difference;
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: #c4b5fd;
     }
-    .cursor.clicking { scale:0.8; background:rgba(167,139,250,0.5); }
+
+    .meta {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      margin-bottom: 3rem;
+    }
+
+    .featured-img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      margin: 2rem 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      display: block;
+    }
+
+    article {
+      font-size: 1.15rem;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin: 3rem 0 1.2rem;
+      color: #a78bfa;
+      border-left: 5px solid #7c3aed;
+      padding-left: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    .quote {
+      background: rgba(124, 58, 237, 0.12);
+      border-left: 5px solid #7c3aed;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-style: italic;
+      font-size: 1.25rem;
+      border-radius: 8px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      margin: 2.5rem 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 4rem 0 2rem;
+      opacity: 0.6;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 1.5rem 1rem; }
+      h1 { font-size: 3rem; }
+      h2 { font-size: 1.8rem; }
+    }
   </style>
 </head>
 <body>
-  <div id="ui">
-    Score: <span id="score">0</span>
-    Combo: <span id="combo">1x</span>
+
+  <div class="container">
+
+    <header>
+      <h1>The World in Turmoil: Major Conflicts Escalating in Early 2026</h1>
+      <div class="meta">March 3, 2026 • Bengaluru Perspective on Global Crises</div>
+    </header>
+
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Ongoing_conflicts_around_the_world.svg/1280px-Ongoing_conflicts_around_the_world.svg.png" 
+      alt="World map of ongoing armed conflicts 2026" 
+      class="featured-img"
+    >
+
+    <article>
+      <p>The world in early 2026 is witnessing an alarming rise in armed conflicts — more than 130 active wars according to recent reports, double the number from just 15 years ago. From sudden escalations in the Middle East to grinding attritional wars in Eastern Europe and Africa, the humanitarian toll continues to mount.</p>
+
+      <h2>The New Front: US-Israel vs Iran War (February–March 2026)</h2>
+      
+      <p>On February 28, 2026, a major escalation began when Israel and the United States launched large-scale strikes on Iranian military and nuclear sites, reportedly killing Supreme Leader Ali Khamenei in the opening hours. Now in its early days, the conflict has seen missile exchanges, strikes on Tehran and Beirut, and involvement of Hezbollah in Lebanon.</p>
+
+      <img 
+        src="https://npr.brightspotcdn.com/dims3/default/strip/false/crop/6000x4000+0+0/resize/1100/quality/50/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F64%2Fc4%2F1837e294474bbed863661bff3663%2F11-gettyimages-2263722105.jpg" 
+        alt="Smoke rises over Tehran after strikes in Iran conflict 2026" 
+        class="featured-img"
+      >
+
+      <p class="quote">“The big wave is yet to come.” — US President on the ongoing campaign against Iran</p>
+
+      <p>The war risks disrupting global oil flows through the Strait of Hormuz and drawing in more regional actors. Civilian casualties and infrastructure damage are already significant.</p>
+
+      <h2>Russia–Ukraine: Attrition Enters Year Five</h2>
+
+      <p>The full-scale invasion continues with slow Russian advances in the east, massive drone/missile strikes, and Ukrainian defensive operations. Daily casualties remain high, with Russia reporting hundreds of losses in single days.</p>
+
+      <img 
+        src="https://www.aljazeera.com/wp-content/uploads/2026/02/2026-02-27T184129Z_87063290_RC29UJAM5NGN_RTRMADP_3_UKRAINE-CRISIS-EAST-1772253335.jpg?resize=1920%2C1080" 
+        alt="Ukrainian soldiers on the frontline in ongoing Russia-Ukraine war" 
+        class="featured-img"
+      >
+
+      <h2>Sudan Civil War: Humanitarian Catastrophe Deepens</h2>
+
+      <p>Entering its fourth year, the power struggle between SAF and RSF has caused famine, mass displacement, and atrocities including sexual violence. Recent fighting has seen SAF gains in Khartoum but spillover risks into neighboring countries.</p>
+
+      <img 
+        src="https://www.hrw.org/sites/default/files/styles/16x9_xxl/public/media_2023/05/202305afr_sudan_khartoum_aerial_bombardment.JPG?h=2b602749&itok=_x1I-4rZ" 
+        alt="Smoke over Khartoum during Sudan civil war bombardment" 
+        class="featured-img"
+      >
+
+      <h2>Watch: Global Conflicts Overview</h2>
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/Nul5J4BKzS8" 
+          title="Six Conflicts to Watch in 2026" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p>Other major flashpoints include Myanmar, Haiti gang violence, Sahel insurgencies, and lingering instability in Yemen and Syria. Diplomatic solutions remain elusive while humanitarian needs explode.</p>
+
+      <p>Stay informed — the situation evolves hourly. Sources: Crisis Group, ACLED, ISW, major news outlets.</p>
+    </article>
+
+    <footer>
+      <p>Blog post created for informational purposes • March 2026</p>
+    </footer>
+
   </div>
-  <div class="cursor" id="cursor"></div>
 
-<script>
-let score = 0, combo = 1, lastPop = 0;
-const scoreEl = document.getElementById('score');
-const comboEl = document.getElementById('combo');
-const cursor = document.getElementById('cursor');
-const bubbles = [];
-
-function createBubble() {
-  const bubble = document.createElement('div');
-  bubble.className = 'bubble';
-  bubble.style.left = Math.random() * 100 + '%';
-  bubble.style.width = bubble.style.height = (20 + Math.random() * 60) + 'px';
-  bubble.style.top = '100vh';
-  bubble.onclick = (e) => {
-    e.stopPropagation();
-    const size = parseFloat(bubble.style.width);
-    score += Math.floor(size * combo * 2);
-    combo = Date.now() - lastPop < 1000 ? combo + 0.2 : 1;
-    lastPop = Date.now();
-    bubble.classList.add('burst');
-    scoreEl.textContent = score;
-    comboEl.textContent = (combo | 0) + 'x';
-    setTimeout(()=>bubble.remove(), 200);
-  };
-  document.body.appendChild(bubble);
-  bubbles.push({el: bubble, vy: 1 + Math.random() * 2});
-}
-
-function loop() {
-  bubbles.forEach((b,i) => {
-    b.el.style.top = (parseFloat(b.el.style.top) - b.vy) + 'vh';
-    if (parseFloat(b.el.style.top) < -10) {
-      b.el.remove();
-      bubbles.splice(i,1);
-      combo = 1;
-      comboEl.textContent = '1x';
-    }
-  });
-  requestAnimationFrame(loop);
-}
-
-setInterval(createBubble, 400);
-addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
-addEventListener('mousedown', ()=>cursor.classList.add('clicking'));
-addEventListener('mouseup', ()=>cursor.classList.remove('clicking'));
-
-loop();
-</script>
 </body>
 </html>
