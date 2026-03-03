@@ -2,120 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Avoid • Blocks</title>
+  <title>Color • Reflex</title>
   <style>
     body {
-      margin:0; height:100dvh; overflow:hidden; background:#0d001a;
-      font-family:system-ui; color:#e0e0ff; cursor:none;
-      display:grid; place-items:center;
+      margin:0; height:100dvh; background:#0a0015; color:#f0e0ff;
+      font-family:system-ui; display:grid; place-items:center; cursor:none;
     }
-    canvas { background:linear-gradient(#0f0f1a,#1a0033); touch-action:none; }
-    #ui {
-      position:absolute; top:1.5rem; left:50%; transform:translateX(-50%);
-      font-size:1.8rem; font-weight:300; letter-spacing:0.05em;
-      pointer-events:none; user-select:none;
+    #target {
+      width:180px; height:180px; border-radius:50%; font-size:2.8rem; font-weight:bold;
+      display:grid; place-items:center; transition:all 0.2s; user-select:none;
+      box-shadow:0 0 60px currentColor;
     }
-    #gameover {
-      position:absolute; inset:0; background:rgba(0,0,0,0.85);
-      display:none; flex-direction:column; justify-content:center; align-items:center;
-      font-size:3rem; color:#ff4d94; text-shadow:0 0 20px #ff4d94;
+    #score { position:absolute; top:2rem; font-size:2rem; opacity:0.8; }
+    #cursor {
+      position:fixed; width:44px; height:44px; border:3px solid #c4b5fd;
+      border-radius:50%; pointer-events:none; transform:translate(-50%,-50%);
+      transition:0.1s; mix-blend-mode:difference;
     }
-    .cursor {
-      position:fixed; width:32px; height:32px; border:2px solid #a78bfa;
-      border-radius:50%; pointer-events:none; z-index:999;
-      transform:translate(-50%,-50%); transition:0.08s;
-      mix-blend-mode:difference;
-    }
-    .cursor.hit { border-color:#ff4d94; scale:1.6; opacity:0.7; }
   </style>
 </head>
 <body>
 
-<div id="ui">Score: <span id="score">0</span></div>
-<div id="gameover">GAME OVER<br><span style="font-size:1.4rem;opacity:0.7;margin-top:1rem;">Refresh to play again</span></div>
-
-<canvas id="c"></canvas>
-<div class="cursor" id="cursor"></div>
+<div id="score">Score: <span id="pts">0</span></div>
+<div id="target">START</div>
+<div id="cursor"></div>
 
 <script>
-const c = document.getElementById('c');
-const ctx = c.getContext('2d');
-const scoreEl = document.getElementById('score');
-const gameover = document.getElementById('gameover');
+const colors = ['red','lime','cyan','magenta','yellow','orange','violet','white'];
+const names  = ['RED','GREEN','CYAN','MAGENTA','YELLOW','ORANGE','VIOLET','WHITE'];
+let score = 0, active = false;
+const target = document.getElementById('target');
+const pts = document.getElementById('pts');
 const cursor = document.getElementById('cursor');
 
-let w, h, score = 0, gameActive = true;
-const blocks = [];
-
-function resize() {
-  w = c.width = innerWidth;
-  h = c.height = innerHeight;
-}
-resize();
-addEventListener('resize', resize);
-
-class Block {
-  constructor() {
-    this.x = Math.random() * w;
-    this.y = -40;
-    this.size = 30 + Math.random() * 40;
-    this.speed = 2 + Math.random() * 4 + score * 0.08;
-    this.color = `hsl(${Math.random()*60 + 280}, 90%, 60%)`;
-  }
-  update() {
-    this.y += this.speed;
-    if (this.y > h + this.size) this.y = -this.size;
-  }
-  draw() {
-    ctx.fillStyle = this.color;
-    ctx.shadowColor = this.color;
-    ctx.shadowBlur = 25;
-    ctx.fillRect(this.x - this.size/2, this.y - this.size/2, this.size, this.size);
-  }
+function newRound() {
+  const realColor = colors[Math.floor(Math.random()*colors.length)];
+  const showName = names[Math.floor(Math.random()*names.length)];
+  target.style.color = realColor;
+  target.textContent = showName;
+  active = (realColor.toUpperCase() === showName);
 }
 
-function loop() {
-  if (!gameActive) return;
-  ctx.fillStyle = 'rgba(13,0,26,0.15)';
-  ctx.fillRect(0,0,w,h);
+target.onclick = () => {
+  if (active) {
+    score++;
+    pts.textContent = score;
+    target.style.scale = '1.3';
+    setTimeout(()=>target.style.scale='1', 120);
+    newRound();
+  } else if (score > 0) {
+    score = 0;
+    pts.textContent = 0;
+    alert("Wrong color! Reset →");
+  }
+};
 
-  if (Math.random() < 0.04 + score*0.003) blocks.push(new Block());
-
-  blocks.forEach((b,i) => {
-    b.update();
-    b.draw();
-    const dx = b.x - mouse.x;
-    const dy = b.y - mouse.y;
-    if (Math.hypot(dx, dy) < b.size/2 + 16) {
-      gameActive = false;
-      cursor.classList.add('hit');
-      gameover.style.display = 'flex';
-    }
-  });
-
-  score += 0.016;
-  scoreEl.textContent = Math.floor(score);
-  requestAnimationFrame(loop);
-}
-
-let mouse = {x:w/2, y:h/2};
-addEventListener('mousemove', e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-  cursor.style.left = mouse.x + 'px';
-  cursor.style.top  = mouse.y + 'px';
+addEventListener('mousemove', e=>{
+  cursor.style.left = e.clientX+'px';
+  cursor.style.top  = e.clientY+'px';
 });
 
-addEventListener('touchmove', e => {
-  e.preventDefault();
-  mouse.x = e.touches[0].clientX;
-  mouse.y = e.touches[0].clientY;
-  cursor.style.left = mouse.x + 'px';
-  cursor.style.top  = mouse.y + 'px';
-}, {passive:false});
-
-loop();
+newRound();
+setInterval(newRound, 2200); // change every ~2.2s
 </script>
 </body>
 </html>
